@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-École La Melloise — Melle (79) | Permis B, Conduite Accompagnée</title>
+    <meta name="description" content="Auto-École La Melloise à Melle (79). Permis B, conduite accompagnée, conduite supervisée, boîte automatique. Formation personnalisée dans une ambiance conviviale.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #1e3a5f;
+            --navy-light: #2a4f7a;
+            --amber: #f59e0b;
+            --amber-dark: #d97706;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+        body { font-family: 'Poppins', sans-serif; color: #334155; line-height: 1.6; }
+        img { max-width: 100%; height: auto; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: var(--white); box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            padding: 0.7rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            font-size: 1.15rem; font-weight: 800; color: var(--navy);
+            text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+        }
+        .nav-brand span { color: var(--amber); }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--amber); }
+        .nav-cta {
+            background: var(--amber); color: var(--white); padding: 0.55rem 1.3rem;
+            border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: background 0.3s;
+        }
+        .nav-cta:hover { background: var(--amber-dark); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); margin: 5px 0; transition: 0.3s; }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh; display: flex; align-items: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #35618f 100%);
+            padding: 7rem 2rem 4rem; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -40%; right: -15%; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%); border-radius: 50%;
+        }
+        .hero-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+        .hero-text { color: var(--white); }
+        .hero-badge {
+            display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.8rem;
+            font-weight: 500; margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.15);
+        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--amber); }
+        .hero p { font-size: 1.05rem; opacity: 0.88; margin-bottom: 2rem; line-height: 1.7; max-width: 650px; margin-left: auto; margin-right: auto; }
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-amber {
+            background: var(--amber); color: var(--white); padding: 0.85rem 1.8rem;
+            border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s;
+        }
+        .btn-amber:hover { background: var(--amber-dark); transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent; color: var(--white); padding: 0.85rem 1.8rem;
+            border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+            border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s;
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+        /* STATS */
+        .stats-bar {
+            background: var(--amber); padding: 1.8rem 2rem;
+            display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+        }
+        .stat { text-align: center; color: var(--white); }
+        .stat-num { font-size: 1.6rem; font-weight: 800; }
+        .stat-label { font-size: 0.78rem; opacity: 0.9; margin-top: 0.15rem; }
+
+        /* SECTIONS */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.1rem; font-weight: 800; color: var(--navy); margin-bottom: 0.5rem; }
+        .section-title p { color: var(--gray); font-size: 1rem; max-width: 550px; margin: 0 auto; }
+        .accent-line { width: 50px; height: 4px; background: var(--amber); border-radius: 2px; margin: 0.8rem auto 0; }
+
+        /* FORMATIONS */
+        .formations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .formation-card {
+            background: var(--white); border-radius: 16px; padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s;
+            border: 1px solid #e2e8f0; display: flex; gap: 1.2rem; align-items: flex-start;
+        }
+        .formation-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+        .formation-icon {
+            width: 50px; height: 50px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .formation-icon.primary { background: rgba(30,58,95,0.08); }
+        .formation-icon.accent { background: rgba(245,158,11,0.1); }
+        .formation-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+        .formation-card p { color: var(--gray); font-size: 0.86rem; line-height: 1.7; }
+
+        /* ABOUT */
+        .about { background: var(--light); }
+        .about-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-inner h2 { font-size: 2rem; font-weight: 800; color: var(--navy); margin-bottom: 1.2rem; }
+        .about-inner p { color: #555; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; }
+        .about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .value-card { text-align: center; padding: 1.5rem; }
+        .value-icon { font-size: 2rem; margin-bottom: 0.8rem; color: var(--amber); }
+        .value-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+        .value-card p { font-size: 0.82rem; color: var(--gray); }
+
+        /* CONTACT */
+        .contact { background: var(--navy); color: var(--white); }
+        .contact .section-title h2 { color: var(--white); }
+        .contact .section-title p { color: rgba(255,255,255,0.65); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .schedule-table { width: 100%; }
+        .schedule-row {
+            display: flex; justify-content: space-between; padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .schedule-day { font-weight: 600; font-size: 0.95rem; }
+        .schedule-time { opacity: 0.8; font-size: 0.9rem; }
+        .schedule-closed { color: rgba(255,255,255,0.4); }
+        .contact-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+        .contact-card {
+            background: rgba(255,255,255,0.06); border-radius: 12px; padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .contact-card h4 { font-size: 0.78rem; opacity: 0.55; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-card p { font-size: 1rem; font-weight: 500; }
+        .contact-card a { color: var(--white); text-decoration: none; }
+        .contact-card a:hover { color: var(--amber); }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark); color: rgba(255,255,255,0.45);
+            padding: 1.5rem 2rem; text-align: center; font-size: 0.78rem;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: block; }
+            .hero h1 { font-size: 2rem; }
+            .hero { min-height: 75vh; padding: 6rem 1.5rem 3rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .stats-bar { gap: 1.5rem; }
+            .stat-num { font-size: 1.3rem; }
+            .formations-grid { grid-template-columns: 1fr; }
+            .about-values { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section-title h2 { font-size: 1.7rem; }
+            section { padding: 3.5rem 1.5rem; }
+        }
+        .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); padding: 1rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="#" class="nav-brand">La <span>Melloise</span></a>
+    <ul class="nav-links">
+        <li><a href="#formations">Formations</a></li>
+        <li><a href="#apropos">Notre école</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:0698481661" class="nav-cta">06 98 48 16 61</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-badge">Auto-école à Melle (79)</div>
+            <h1>Votre permis avec <span>La Melloise</span></h1>
+            <p>Une auto-école à taille humaine, au cœur du Pays Mellois. Formation personnalisée, ambiance conviviale et accompagnement sur mesure pour décrocher votre permis en toute sérénité.</p>
+            <div class="hero-btns">
+                <a href="tel:0698481661" class="btn-amber">Nous appeler</a>
+                <a href="mailto:lamelloise@outlook.fr" class="btn-outline">Nous écrire</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stat">
+        <div class="stat-num">Permis B</div>
+        <div class="stat-label">Manuel et automatique</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num">AAC</div>
+        <div class="stat-label">Dès 15 ans</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num">Code</div>
+        <div class="stat-label">En salle et en ligne</div>
+    </div>
+</div>
+
+<!-- FORMATIONS -->
+<section id="formations">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nos formations</h2>
+            <p>Des parcours adaptés à votre rythme pour réussir votre permis</p>
+            <div class="accent-line"></div>
+        </div>
+        <div class="formations-grid">
+            <div class="formation-card">
+                <div class="formation-icon primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <div>
+                    <h3>Permis B — Boîte manuelle</h3>
+                    <p>Formation complète au permis de conduire : code de la route et heures de conduite avec un moniteur diplômé d'État.</p>
+                </div>
+            </div>
+            <div class="formation-card">
+                <div class="formation-icon accent">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <div>
+                    <h3>Permis B — Boîte automatique</h3>
+                    <p>Passez votre permis sur véhicule automatique. Moins d'heures de conduite requises, formation simplifiée et efficace.</p>
+                </div>
+            </div>
+            <div class="formation-card">
+                <div class="formation-icon primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <h3>Conduite accompagnée (AAC)</h3>
+                    <p>Accessible dès 15 ans. Accumulez de l'expérience avec un accompagnateur après votre formation initiale en auto-école.</p>
+                </div>
+            </div>
+            <div class="formation-card">
+                <div class="formation-icon accent">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                    <h3>Conduite supervisée</h3>
+                    <p>Pour les candidats de 18 ans et plus. Complétez votre apprentissage avec un accompagnateur avant de passer l'examen.</p>
+                </div>
+            </div>
+            <div class="formation-card">
+                <div class="formation-icon primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <div>
+                    <h3>Code de la route</h3>
+                    <p>Entraînement en salle aux horaires d'ouverture et en ligne depuis chez vous. Cours et tests pour maîtriser la théorie.</p>
+                </div>
+            </div>
+            <div class="formation-card">
+                <div class="formation-icon accent">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div>
+                    <h3>Vérifications et premiers secours</h3>
+                    <p>Préparation aux questions de vérification du véhicule et formation aux gestes de premiers secours, intégrées à votre parcours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- A PROPOS -->
+<section class="about" id="apropos">
+    <div class="container">
+        <div class="about-inner">
+            <h2>Une auto-école à taille humaine</h2>
+            <p>Installée au cœur de Melle, l'auto-école La Melloise vous accueille dans une ambiance conviviale et bienveillante. Notre équipe met un point d'honneur à connaître chaque élève par son prénom et à adapter la pédagogie à son rythme.</p>
+            <p>Que vous soyez un jeune conducteur pressé de prendre la route ou un adulte souhaitant reprendre confiance, nous vous accompagnons avec patience et professionnalisme tout au long de votre formation.</p>
+            <div class="about-values">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                    <h4>Proximité</h4>
+                    <p>Un suivi personnalisé, un moniteur qui vous connaît</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h4>Flexibilité</h4>
+                    <p>Des horaires adaptés à votre emploi du temps</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4>Réussite</h4>
+                    <p>Un objectif clair : votre permis du premier coup</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Horaires et contact</h2>
+            <p>Retrouvez-nous à Melle (79500)</p>
+            <div class="accent-line"></div>
+        </div>
+        <div class="contact-grid">
+            <div>
+                <div class="schedule-table">
+                    <div class="schedule-row">
+                        <span class="schedule-day">Lundi</span>
+                        <span class="schedule-closed">Fermé</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Mardi</span>
+                        <span class="schedule-closed">Fermé</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Mercredi</span>
+                        <span class="schedule-time">13h30 — 18h00</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Jeudi</span>
+                        <span class="schedule-closed">Fermé</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Vendredi</span>
+                        <span class="schedule-closed">Fermé</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Samedi</span>
+                        <span class="schedule-time">10h00 — 14h00</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Dimanche</span>
+                        <span class="schedule-closed">Fermé</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h4>Adresse</h4>
+                    <p>Melle<br>79500 Melle</p>
+                </div>
+                <div class="contact-card">
+                    <h4>Téléphone</h4>
+                    <p><a href="tel:0698481661">06 98 48 16 61</a></p>
+                </div>
+                <div class="contact-card">
+                    <h4>Email</h4>
+                    <p><a href="mailto:lamelloise@outlook.fr">lamelloise@outlook.fr</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>Auto-École La Melloise — Melle (79500)</p>
+    <p style="margin-top:0.4rem;">&copy; 2026 Auto-École La Melloise — Auto-École du Pays Mellois. Tous droits réservés.</p>
+</footer>
+
+<script>
+document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('show');
+});
+</script>
+
+</body>
+</html>
